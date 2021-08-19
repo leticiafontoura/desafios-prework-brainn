@@ -6,3 +6,13 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.blue {
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+}
+
+.not-blue {
+  display: none;
+}
