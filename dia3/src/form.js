@@ -8,7 +8,7 @@ input.addEventListener("input", (e) => {
     let newArrNames = [];
 
     for (let i = 0; i < nameChangeArr.length; i++) {
-      newArrNames.push(nameChangeArr[i].charAt(0).toUpperCase() + nameChangeArr[i].slice(1));
+      newArrNames.push(nameChangeArr[i].charAt(0).toUpperCase() + nameChangeArr[i].slice(1).toLowerCase());
     }
 
     for (let i = 0; i < newArrNames.length; i++) {
