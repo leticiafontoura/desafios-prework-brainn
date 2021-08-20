@@ -8,11 +8,37 @@
   </head>
   <body>
     <form>
-      <label for= "name">Nome: </label>
+      <label for="name">Nome: </label>
       <input type="text" id="name" name="name" data-js="name">
       <div data-js="form">
       </div>
     </form>
+    <form data-js="cars-form">
+      <label for="car-image">Imagem (URL):</label>
+      <input type="text" id="car-image" name="car-image" data-js="car-image">
+      <label for="car-make-model">Marca/modelo:</label>
+      <input type="text" id="car-make-model" name="car-make-model" data-js="car-make-model">
+      <label for="car-year">Ano:</label>
+      <input type="number" id="car-year" name="car-year" data-js="car-year">
+      <label for="car-license-plate">Placa:</label>
+      <input type="text" id="car-license-plate" name="car-license-plate" data-js="car-license-plate">
+      <label for="car-color">Cor:</label>
+      <input type="text" id="car-color" name="car-color" data-js="car-color">
+      <button type="submit">Cadastrar 🚗</button>
+    </form>
+
+    <table border="1">
+      <thead>
+        <th>Imagem</th>
+        <th>Marca/modelo</th>
+        <th>Ano</th>
+        <th>Placa</th>
+        <th>Cor</th>
+      </thead>
+      <tbody data-js="table-body">
+
+      </tbody>
+    </table>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
