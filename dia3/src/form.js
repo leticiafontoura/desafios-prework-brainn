@@ -95,12 +95,12 @@ const form = document.querySelector("[data-js='form']");
 
 form.innerHTML = `<label for="colors">Escolha uma cor:</label></br>
 
-<select name="colors" id="colors" multiple data-js="select-colors">
-  <option value="Blue">Blue</option>
-  <option value="Green">Green</option>
-  <option value="Red">Red</option>
-  <option value="Purple">Purple</option>
-  <option value="Black">Black</option>
+<select name="colors" id="colors" class="colors" multiple data-js="select-colors">
+  <option value="Blue">Azul</option>
+  <option value="Green">Verde</option>
+  <option value="Red">Vermelho</option>
+  <option value="Purple">Roxo</option>
+  <option value="Black">Preto</option>
 </select>`
 
 const colorsSelect = document.querySelector("[data-js='select-colors']");
