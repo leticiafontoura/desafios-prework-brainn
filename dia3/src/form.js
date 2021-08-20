@@ -93,7 +93,7 @@ input.addEventListener("input", (e) => {
 
 const form = document.querySelector("[data-js='form']");
 
-form.innerHTML = `<label for="colors">Escolha uma cor:</label>
+form.innerHTML = `<label for="colors">Escolha uma cor:</label></br>
 
 <select name="colors" id="colors" multiple data-js="select-colors">
   <option value="Blue">Blue</option>
@@ -107,57 +107,46 @@ const colorsSelect = document.querySelector("[data-js='select-colors']");
 const colorsDiv = document.createElement("div");
 colorsDiv.style.display = "flex";
 form.appendChild(colorsDiv);
-// colorsDiv.innerHTML = `<div class="blue" data-js="blue"></div><div class="green" data-js="green"></div><div class="red" data-js="red"></div><div class="purple" data-js="purple"></div><div class="black" data-js="black"></div>`
 
 const blue = document.createElement("div");
 blue.setAttribute("class", "blue");
-colorsDiv.appendChild(blue);
 
 const green = document.createElement("div");
 green.setAttribute("class", "green");
-colorsDiv.appendChild(green);
 
 const red = document.createElement("div");
 red.setAttribute("class", "red");
-colorsDiv.appendChild(red);
 
 const purple = document.createElement("div");
 purple.setAttribute("class", "purple");
-colorsDiv.appendChild(purple);
 
 const black = document.createElement("div");
 black.setAttribute("class", "black");
-colorsDiv.appendChild(black);
-
 
 colorsSelect.addEventListener("click", (e) => {
 
   if (e.target.value === "Blue") {
-    // const blue = document.querySelector("[data-js='blue']");
+    colorsDiv.appendChild(blue);
     blue.classList.toggle("with-color");
   }
 
   if (e.target.value === "Green") {
-    // const green = document.querySelector("[data-js='green']");
-    // console.log(green)
+    colorsDiv.appendChild(green);
     green.classList.toggle("with-color");
   }
 
   if (e.target.value === "Red") {
-    // const red = document.querySelector("[data-js='red']");
-    // console.log(red)
+    colorsDiv.appendChild(red);
     red.classList.toggle("with-color");
   }
 
   if (e.target.value === "Purple") {
-    // const purple = document.querySelector("[data-js='purple']");
-    // console.log(purple)
+    colorsDiv.appendChild(purple);
     purple.classList.toggle("with-color");
   }
 
   if (e.target.value === "Black") {
-    // const black = document.querySelector("[data-js='black']");
-    // console.log(black)
+    colorsDiv.appendChild(black);
     black.classList.toggle("with-color");
   }
 })
