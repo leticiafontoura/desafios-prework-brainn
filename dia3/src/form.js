@@ -107,52 +107,37 @@ const colorsSelect = document.querySelector("[data-js='select-colors']");
 const colorsDiv = document.createElement("div");
 colorsDiv.style.display = "flex";
 form.appendChild(colorsDiv);
+colorsDiv.innerHTML = `<div class="blue" data-js="blue"></div><div class="green" data-js="green"></div><div class="red" data-js="red"></div><div class="purple" data-js="purple"></div><div class="black" data-js="black"></div>`
 
 colorsSelect.addEventListener("click", (e) => {
 
   if (e.target.value === "Blue") {
-    const colorBlue = document.createElement("div");
-    colorBlue.setAttribute("class", "blue")
-    // colorBlue.style.backgroundColor = "blue";
-    // colorBlue.style.width = "100px";
-    // colorBlue.style.height = "100px";
-    colorsDiv.appendChild(colorBlue)
-    colorBlue.classList.toggle("not-blue")
+    const blue = document.querySelector("[data-js='blue']");
+    console.log(blue)
+    blue.classList.toggle("with-color");
   }
 
   if (e.target.value === "Green") {
-    const colorGreen = document.createElement("div");
-    colorGreen.setAttribute("class", "Green")
-    colorGreen.style.backgroundColor = "Green";
-    colorGreen.style.width = "100px";
-    colorGreen.style.height = "100px";
-    colorsDiv.appendChild(colorGreen)
+    const green = document.querySelector("[data-js='green']");
+    console.log(green)
+    green.classList.toggle("with-color");
   }
 
   if (e.target.value === "Red") {
-    const colorRed = document.createElement("div");
-    colorRed.setAttribute("class", "Red")
-    colorRed.style.backgroundColor = "Red";
-    colorRed.style.width = "100px";
-    colorRed.style.height = "100px";
-    colorsDiv.appendChild(colorRed)
+    const red = document.querySelector("[data-js='red']");
+    console.log(red)
+    red.classList.toggle("with-color");
   }
 
   if (e.target.value === "Purple") {
-    const colorPurple = document.createElement("div");
-    colorPurple.setAttribute("class", "Purple")
-    colorPurple.style.backgroundColor = "Purple";
-    colorPurple.style.width = "100px";
-    colorPurple.style.height = "100px";
-    colorsDiv.appendChild(colorPurple)
+    const purple = document.querySelector("[data-js='purple']");
+    console.log(purple)
+    purple.classList.toggle("with-color");
   }
 
   if (e.target.value === "Black") {
-    const colorBlack = document.createElement("div");
-    colorBlack.setAttribute("class", "Black")
-    colorBlack.style.backgroundColor = "Black";
-    colorBlack.style.width = "100px";
-    colorBlack.style.height = "100px";
-    colorsDiv.appendChild(colorBlack)
+    const black = document.querySelector("[data-js='black']");
+    console.log(black)
+    black.classList.toggle("with-color");
   }
 })

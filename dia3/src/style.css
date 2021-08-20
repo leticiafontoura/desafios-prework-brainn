@@ -11,8 +11,41 @@
   background-color: blue;
   width: 100px;
   height: 100px;
+  display: none;
 }
 
-.not-blue {
+.green {
+  background-color: green;
+  width: 100px;
+  height: 100px;
   display: none;
+}
+
+.red {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+
+.purple {
+  background-color: purple;
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+
+.black {
+  background-color: black;
+  width: 100px;
+  height: 100px;
+  display: none;
+}
+
+.no-color {
+  display: none;
+}
+
+.with-color {
+  display: block;
 }
