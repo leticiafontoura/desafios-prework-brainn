@@ -2,44 +2,43 @@ const carsForm = document.querySelector("[data-js='cars-form']");
 
 const carTableInformation = document.querySelector("[data-js='table-body']");
 
-
 carsForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const carImageInput = document.querySelector("[data-js='car-image']");
   const carRow = document.createElement("tr");
   carTableInformation.appendChild(carRow);
-  const carImageElement = carImageInput.value;
+  const carImageValue = carImageInput.value;
   const carImageCell = document.createElement("td");
-  carImageCell.innerHTML = carImageElement;
+  carImageCell.innerHTML = carImageValue;
   carRow.appendChild(carImageCell);
 
   const carMakeModelInput = document.querySelector("[data-js='car-make-model']");
   carTableInformation.appendChild(carRow);
-  const carMakeModelElement = carMakeModelInput.value;
+  const carMakeModelValue = carMakeModelInput.value;
   const carMakeModelCell = document.createElement("td");
-  carMakeModelCell.innerHTML = carMakeModelElement;
+  carMakeModelCell.innerHTML = carMakeModelValue;
   carRow.appendChild(carMakeModelCell);
 
   const carYearInput = document.querySelector("[data-js='car-year']");
   carTableInformation.appendChild(carRow);
-  const carYearElement = carYearInput.value;
+  const carYearValue = carYearInput.value;
   const carYearCell = document.createElement("td");
-  carYearCell.innerHTML = carYearElement;
+  carYearCell.innerHTML = carYearValue;
   carRow.appendChild(carYearCell);
 
   const carLicensePlateInput = document.querySelector("[data-js='car-license-plate']");
   carTableInformation.appendChild(carRow);
-  const carLicensePlateElement = carLicensePlateInput.value;
+  const carLicensePlateValue = carLicensePlateInput.value;
   const carLicensePlateCell = document.createElement("td");
-  carLicensePlateCell.innerHTML = carLicensePlateElement;
+  carLicensePlateCell.innerHTML = carLicensePlateValue;
   carRow.appendChild(carLicensePlateCell);
 
   const carColorInput = document.querySelector("[data-js='car-color']");
   carTableInformation.appendChild(carRow);
-  const carColorElement = carColorInput.value;
+  const carColorValue = carColorInput.value;
   const carColorCell = document.createElement("td");
-  carColorCell.innerHTML = carColorElement;
+  carColorCell.innerHTML = carColorValue;
   carRow.appendChild(carColorCell);
 
   carImageInput.value = "";
