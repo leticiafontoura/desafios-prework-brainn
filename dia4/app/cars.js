@@ -2,6 +2,7 @@ const carsForm = document.querySelector("[data-js='cars-form']");
 const table = document.querySelector("table");
 
 function refreshTable() {
+
   console.log("Refreshing table..");
 
   fetch("http://localhost:3333/cars")
@@ -27,9 +28,36 @@ function refreshTable() {
         <td>${cars[i].year}</td>
         <td>${cars[i].plate}</td>
         <td>${cars[i].color}</td>
+        <td><button data-js="del-btn">deletar</button></td>
         </tr>`)
       }
+
+      const btn = document.querySelectorAll("[data-js='del-btn']")
+      const btnArray = Array.from(btn);
+      console.log(btnArray)
+
+      for (let i = 0; i < btnArray.length; i++) {
+        btnArray[i].addEventListener("click", () =>
+          fetch("http://localhost:3333/cars")
+          .then((resposta) => resposta.json())
+          .then((resposta) =>    fetch(
+            "http://localhost:3333/cars", {
+              method: "delete",
+              body: JSON.stringify({
+                plate: resposta[i].plate,
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8"
+              },
+            }
+          ).then(() => refreshTable())))
+
+        
+      }
+
     })
+
+
 }
 
 refreshTable();
@@ -75,14 +103,6 @@ carsForm.addEventListener("submit", (e) => {
         refreshTable();
       }
     })
-  // {
-  //   console.log(response.json())
-  //   // if (response.error === true) {
-  //   //   console.log("errouuuu")
-  //   // }
-
-  //   refreshTable();
-  // })
 
   carImageInput.value = "";
   carMakeModelInput.value = "";
@@ -93,3 +113,9 @@ carsForm.addEventListener("submit", (e) => {
   carImageInput.focus();
 
 })
+
+
+// button.addEventListener("click", (e) => {
+//   e.deleteCar();
+//   console.log("foi")
+// })
