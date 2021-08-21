@@ -1,6 +1,38 @@
 const carsForm = document.querySelector("[data-js='cars-form']");
+const table = document.querySelector("table");
 
-const carTableInformation = document.querySelector("[data-js='table-body']");
+function refreshTable() {
+  console.log("Refreshing table..");
+
+  fetch("http://localhost:3333/cars")
+  .then((response) => response.json())
+  .then((cars) => {
+    if (cars.length === 0) {
+      table.insertAdjacentHTML("beforeend", `<tbody><tr><td colspan="5">Nenhum carro cadastrado</td></tr></tbody>`)
+      return;
+    }
+
+    // If tbody already exists, we simply remove it, because we'll always create a new one.
+    const existingTbody = document.querySelector("tbody");
+    if (existingTbody) {
+      existingTbody.remove();
+    }
+
+    const tbody = document.createElement("tbody");
+    table.appendChild(tbody);
+    for (let i = 0; i < cars.length; i++) {
+      tbody.insertAdjacentHTML("beforeend", `<tr data-js='table-row'>
+        <td>${cars[i].image}</td>
+        <td>${cars[i].brandModel}</td>
+        <td>${cars[i].year}</td>
+        <td>${cars[i].plate}</td>
+        <td>${cars[i].color}</td>
+        </tr>`)
+    }
+  })
+}
+
+refreshTable();
 
 carsForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -32,20 +64,8 @@ carsForm.addEventListener("submit", (e) => {
     headers: {
       "Content-type": "application/json; charset=UTF-8"
     }
-  }).then(response => {
-    fetch("http://localhost:3333/cars").then(response2 =>
-      response2.json()).then(response2data => {
-        console.log(response2data.length)
-      for (let i = 0; i < response2data.length; i++) {
-        carTableInformation.insertAdjacentHTML("beforebegin", `<tr>
-     <td>${response2data[i].image}</td>
-     <td>${response2data[i].brandModel}</td>
-     <td>${response2data[i].year}</td>
-     <td>${response2data[i].plate}</td>
-     <td>${response2data[i].color}</td>
-   </tr>`)
-      }
-    });
+  }).then(() => {
+    refreshTable();
   })
 
   carImageInput.value = "";
