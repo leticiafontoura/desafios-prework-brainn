@@ -20,47 +20,33 @@ carsForm.addEventListener("submit", (e) => {
   const carColorInput = document.querySelector("[data-js='car-color']");
   const carColorValue = carColorInput.value;
 
-
-  // const itemsObj = {
-  //   carImage: carImageValue,
-  //   carMakeModel: carMakeModelValue,
-  //   carYear: carYearValue,
-  //   carLicensePlate: carLicensePlateValue,
-  //   carColor: carColorValue
-  // }
-
-  // function renderTable(items) {
-  //   carTableInformation.insertAdjacentHTML("beforebegin", `<tr>
-  //   <td>${items.carImage}</td>
-  //   <td>${items.carMakeModel}</td>
-  //   <td>${items.carYear}</td>
-  //   <td>${items.carLicensePlate}</td>
-  //   <td>${items.carColor}</td>
-  // </tr>`)
-  // }
-
-  // renderTable(itemsObj);
-
-  // fetch("http://localhost:3333/cars", {
-  //   method: "post",
-  //   body: JSON.stringify({
-  //     image: carImageValue,
-  //     brandModel: carMakeModelValue,
-  //     year: carYearValue,
-  //     plate: carLicensePlateValue,
-  //     color: carColorValue
-  //   })
-  // }).then(response => {
-  //   console.log(response.json())
-  // })
-
-  fetch("http://localhost:3333/cars").then((response) => response.json()).then((response2) => {
-    if (response2.length === 0) {
-      carTableInformation.insertAdjacentHTML("beforebegin", `<tr><td colspan="5">Nenhum carro cadastrado</td></tr>`)
+  fetch("http://localhost:3333/cars", {
+    method: "POST",
+    body: JSON.stringify({
+      image: carImageValue,
+      brandModel: carMakeModelValue,
+      year: carYearValue,
+      plate: carLicensePlateValue,
+      color: carColorValue
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
     }
+  }).then(response => {
+    fetch("http://localhost:3333/cars").then(response2 =>
+      response2.json()).then(response2data => {
+        console.log(response2data.length)
+      for (let i = 0; i < response2data.length; i++) {
+        carTableInformation.insertAdjacentHTML("beforebegin", `<tr>
+     <td>${response2data[i].image}</td>
+     <td>${response2data[i].brandModel}</td>
+     <td>${response2data[i].year}</td>
+     <td>${response2data[i].plate}</td>
+     <td>${response2data[i].color}</td>
+   </tr>`)
+      }
+    });
   })
-
-
 
   carImageInput.value = "";
   carMakeModelInput.value = "";

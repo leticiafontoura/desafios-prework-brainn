@@ -43,7 +43,7 @@ buscar todos os carros que foram cadastrados. Lembre-se que, para **obter** info
 usamos o método `GET`. 
 
 Como resultado da requisição, você irá receber um array com todos os carros cadastrados.
-Se não houverem carros cadastrados, o resultado será um array vazio.
+Se não houverem carros cadastrados, o resultado será um array vazio.  
 
 Mostre na tabela os carros cadastrados, e, se não houverem carros, mostre na tabela
 apenas uma linha com o texto: "Nenhum carro encontrado".
