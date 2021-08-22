@@ -74,7 +74,7 @@ form.addEventListener('submit', async (e: Event) => {
 })
 
 function createTableRow (data: any) {
-  const elements: Array<{}> = [
+  const elements: Array<{type: string, value: {} | string}> = [
     { type: 'image', value: { src: data.image, alt: data.brandModel } },
     { type: 'text', value: data.brandModel },
     { type: 'text', value: data.year },
@@ -125,7 +125,7 @@ async function handleDelete (e: Event) {
 function createNoCarRow () {
   const tr: HTMLElement = document.createElement('tr')
   const td: HTMLElement = document.createElement('td')
-  const thsLength: number = document.querySelectorAll('table th').length
+  const thsLength: number = Number(document.querySelectorAll('table th').length)
   td.setAttribute('colspan', thsLength)
   td.textContent = 'Nenhum carro encontrado'
 
