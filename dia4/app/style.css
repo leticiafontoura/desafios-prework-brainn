@@ -10,3 +10,63 @@ body {
 .error-message {
   display: none;
 }
+
+td, th {
+  padding: 10px;
+}
+
+table tr:nth-child(even) {
+  background-color: #e5edf6;
+}
+
+
+table {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 900px;
+  border-collapse: collapse;
+}
+
+table th {
+  width: 150px;
+  background-color: #e5edf6;
+}
+
+table td {
+  max-width: 150px;
+  word-wrap: break-word;
+}
+
+table td:last-child {
+  border-right: 0px;
+}
+
+input::placeholder {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #67798c;
+}
+
+input {
+  border-radius: 0px;
+  border: 1px solid #2c3e50;
+  padding: 10px 5px;
+  margin: 10px
+}
+
+.submit-btn {
+  background-color: palegoldenrod;
+  border-radius: 10px;
+  border: 0px;
+  padding: 10px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+}
+
+.del-btn {
+  background-color: palegoldenrod;
+  border-radius: 10px;
+  border: 0px;
+  padding: 10px;
+}

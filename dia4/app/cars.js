@@ -25,12 +25,12 @@ function refreshTable() {
       table.appendChild(tbody);
       for (let i = 0; i < cars.length; i++) {
         tbody.insertAdjacentHTML("beforeend", `<tr data-js='table-row'>
-        <td>${cars[i].image}</td>
+        <td><img src="${cars[i].image}" alt="${cars[i].brandModel}" width="130" height="auto" /></td>
         <td>${cars[i].brandModel}</td>
         <td>${cars[i].year}</td>
         <td>${cars[i].plate}</td>
         <td>${cars[i].color}</td>
-        <td><button data-js="del-btn">deletar</button></td>
+        <td><button class="del-btn" data-js="del-btn">❌</button></td>
         </tr>`)
       }
 
