@@ -13,7 +13,7 @@ function refreshTable() {
        if (existingTbody) {
          existingTbody.remove();
        }
-       
+
       if (cars.length === 0) {
         table.insertAdjacentHTML("beforeend", `<tbody><tr><td colspan="6">Nenhum carro cadastrado</td></tr></tbody>`)
         return;
@@ -51,6 +51,10 @@ function refreshTable() {
               },
             }
           ).then(() => {
+            const errorMessage = document.querySelector("[data-js='error-message']");
+            if (errorMessage.style.display = "block") {
+              errorMessage.style.display = "none";
+            }
             console.log(cars[i].plate)
             refreshTable()
           })})
