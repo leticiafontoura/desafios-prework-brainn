@@ -5,8 +5,10 @@ const url = 'http://localhost:3333/cars'
 const form = document.querySelector('[data-js="cars-form"]')
 const table = document.querySelector('[data-js="table"]')
 
-const getFormElement = (event: any) => (elementName: HTMLElement | number) => {
-  return event.target.elements[Number(elementName)]
+function getFormElement(event: any) {
+  return (elementName: HTMLElement | number | string) => {
+    return event.target.elements[Number(elementName)]
+  }
 }
 
 const elementTypes: {image: Function, text: Function, color: Function} = {
@@ -65,9 +67,9 @@ form.addEventListener('submit', async (e: Event) => {
     table.removeChild(noContent)
   }
 
-  createTableRow(data)
+  createTableRow(data);
 
-  e.target.reset()
+  (e.target as HTMLFormElement).reset();
   image.focus()
 })
 
