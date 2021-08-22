@@ -5,19 +5,19 @@ const url = 'http://localhost:3333/cars'
 const form = document.querySelector('[data-js="cars-form"]')
 const table = document.querySelector('[data-js="table"]')
 
-const getFormElement = (event: Event) => (elementName: HTMLElement) => {
-  return event.target.elements[elementName]
+const getFormElement = (event: any) => (elementName: HTMLElement | number) => {
+  return event.target.elements[Number(elementName)]
 }
 
-const elementTypes = {
+const elementTypes: {image: Function, text: Function, color: Function} = {
   image: createImage,
   text: createText,
   color: createColor,
 }
 
-function createImage (data) {
-  const td = document.createElement('td')
-  const img = document.createElement('img')
+function createImage (data: any) :HTMLTableDataCellElement{
+  const td: HTMLTableDataCellElement = document.createElement('td')
+  const img: HTMLImageElement = document.createElement('img')
   img.src = data.src
   img.alt = data.alt
   img.width = 100
@@ -25,15 +25,15 @@ function createImage (data) {
   return td
 }
 
-function createText (value) {
-  const td = document.createElement('td')
+function createText (value: string) : HTMLTableDataCellElement{
+  const td: HTMLTableDataCellElement = document.createElement('td')
   td.textContent = value
   return td
 }
 
-function createColor (value) {
-  const td = document.createElement('td')
-  const div = document.createElement('div')
+function createColor (value: string) : HTMLTableDataCellElement {
+  const td: HTMLTableDataCellElement = document.createElement('td')
+  const div: HTMLDivElement = document.createElement('div')
   div.style.width = '100px'
   div.style.height = '100px'
   div.style.background = value
@@ -41,11 +41,11 @@ function createColor (value) {
   return td
 }
 
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', async (e: Event) => {
   e.preventDefault()
   const getElement = getFormElement(e)
 
-  const data = {
+  const data: {image: string, brandModel: string, year: number, plate: string, color: string} = {
     image: getElement('image').value,
     brandModel: getElement('brand-model').value,
     year: getElement('year').value,
@@ -71,8 +71,8 @@ form.addEventListener('submit', async (e) => {
   image.focus()
 })
 
-function createTableRow (data) {
-  const elements = [
+function createTableRow (data: any) {
+  const elements: Array<{}> = [
     { type: 'image', value: { src: data.image, alt: data.brandModel } },
     { type: 'text', value: data.brandModel },
     { type: 'text', value: data.year },
@@ -99,8 +99,8 @@ function createTableRow (data) {
   table.appendChild(tr)
 }
 
-async function handleDelete (e) {
-  const button = e.target
+async function handleDelete (e: Event) {
+  const button: EventTarget = e.target
   const plate = button.dataset.plate
 
   const result = await del(url, { plate })
@@ -121,9 +121,9 @@ async function handleDelete (e) {
 }
 
 function createNoCarRow () {
-  const tr = document.createElement('tr')
-  const td = document.createElement('td')
-  const thsLength = document.querySelectorAll('table th').length
+  const tr: HTMLElement = document.createElement('tr')
+  const td: HTMLElement = document.createElement('td')
+  const thsLength: number = document.querySelectorAll('table th').length
   td.setAttribute('colspan', thsLength)
   td.textContent = 'Nenhum carro encontrado'
 
