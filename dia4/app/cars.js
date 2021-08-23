@@ -38,12 +38,11 @@ function refreshTable() {
       const btnArray = Array.from(btn);
       const btnEdit = document.querySelectorAll("[data-js='edit-btn']")
       const btnArrayEdit = Array.from(btnEdit);
-      const carsFormEdit = document.querySelector("[data-js='cars-form-edit']");
+      const carsFormEdit = document.querySelector("[data-js='form-edit-modal']");
 
       for (let i = 0; i < btnArrayEdit.length; i++) {
         btnArrayEdit[i].addEventListener("click", () => {
-          carsFormEdit.style.display = "block";
-          carsForm.style.display = "none";
+          carsFormEdit.classList.toggle("expand");
           document.querySelector("[data-js='car-image-edit']").value = cars[i].image;
           document.querySelector("[data-js='car-make-model-edit']").value = cars[i].brandModel;
           document.querySelector("[data-js='car-year-edit']").value = cars[i].year;
@@ -52,12 +51,22 @@ function refreshTable() {
         })
       }
 
+      const cancelBtn = document.querySelector("[data-js='cancel-save-btn'");
+
+      cancelBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (carsFormEdit.classList.contains("expand")) {
+          carsFormEdit.classList.remove("expand")
+        }
+      })
 
       const editForm = document.querySelector("[data-js='cars-form-edit']");
       editForm.addEventListener("submit", (e) => {
-        carsFormEdit.style.display = "none";
-        carsForm.style.display = "block";
         e.preventDefault();
+        if (carsFormEdit.classList.contains("expand")) {
+          carsFormEdit.classList.remove("expand")
+        }
+
         fetch(`http://localhost:3333/cars/${document.querySelector("[data-js='car-license-plate-edit']").value}`, {
           method: "put",
           body: JSON.stringify({
