@@ -8,11 +8,11 @@ function refreshTable() {
   fetch("http://localhost:3333/cars")
     .then((response) => response.json())
     .then((cars) => {
-       // If tbody already exists, we simply remove it, because we'll always create a new one.
-       const existingTbody = document.querySelector("tbody");
-       if (existingTbody) {
-         existingTbody.remove();
-       }
+      // If tbody already exists, we simply remove it, because we'll always create a new one.
+      const existingTbody = document.querySelector("tbody");
+      if (existingTbody) {
+        existingTbody.remove();
+      }
 
       if (cars.length === 0) {
         table.insertAdjacentHTML("beforeend", `<tbody><tr><td colspan="6">Nenhum carro cadastrado</td></tr></tbody>`)
@@ -30,12 +30,52 @@ function refreshTable() {
         <td>${cars[i].year}</td>
         <td>${cars[i].plate}</td>
         <td>${cars[i].color}</td>
-        <td><button class="del-btn" data-js="del-btn">❌</button></td>
+        <td><button class="del-btn" data-js="del-btn" alt="excluir"><i class="fas fa-trash"></i></button><button class="edit-btn" data-js="edit-btn"><i class="fas fa-pencil-alt"></i></button></td>
         </tr>`)
       }
 
       const btn = document.querySelectorAll("[data-js='del-btn']")
       const btnArray = Array.from(btn);
+      const btnEdit = document.querySelectorAll("[data-js='edit-btn']")
+      const btnArrayEdit = Array.from(btnEdit);
+      const carsFormEdit = document.querySelector("[data-js='cars-form-edit']");
+
+      for (let i = 0; i < btnArrayEdit.length; i++) {
+        btnArrayEdit[i].addEventListener("click", () => {
+          carsFormEdit.style.display = "block";
+          carsForm.style.display = "none";
+          document.querySelector("[data-js='car-image-edit']").value = cars[i].image;
+          document.querySelector("[data-js='car-make-model-edit']").value = cars[i].brandModel;
+          document.querySelector("[data-js='car-year-edit']").value = cars[i].year;
+          document.querySelector("[data-js='car-license-plate-edit']").value = cars[i].plate;
+          document.querySelector("[data-js='car-color-edit']").value = cars[i].color;
+        })
+      }
+
+
+      const editForm = document.querySelector("[data-js='cars-form-edit']");
+      editForm.addEventListener("submit", (e) => {
+        carsFormEdit.style.display = "none";
+        carsForm.style.display = "block";
+        e.preventDefault();
+        fetch(`http://localhost:3333/cars/${document.querySelector("[data-js='car-license-plate-edit']").value}`, {
+          method: "put",
+          body: JSON.stringify({
+            image: document.querySelector("[data-js='car-image-edit']").value,
+            brandModel: document.querySelector("[data-js='car-make-model-edit']").value,
+            year: document.querySelector("[data-js='car-year-edit']").value,
+            plate: document.querySelector("[data-js='car-license-plate-edit']").value,
+            color: document.querySelector("[data-js='car-color-edit']").value
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          },
+        })
+        .then(() => {
+          refreshTable();
+        })
+      })
+
       console.log(btnArray)
 
       for (let i = 0; i < btnArray.length; i++) {
@@ -57,7 +97,8 @@ function refreshTable() {
             }
             console.log(cars[i].plate)
             refreshTable()
-          })})
+          })
+        })
 
 
       }
@@ -120,9 +161,3 @@ carsForm.addEventListener("submit", (e) => {
   carImageInput.focus();
 
 })
-
-
-// button.addEventListener("click", (e) => {
-//   e.deleteCar();
-//   console.log("foi")
-// })

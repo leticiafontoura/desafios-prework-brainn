@@ -55,7 +55,7 @@ input {
   margin: 10px
 }
 
-.submit-btn {
+.submit-btn, .edit-save-btn {
   background-color: palegoldenrod;
   border-radius: 10px;
   border: 0px;
@@ -64,9 +64,14 @@ input {
   color: #2c3e50;
 }
 
-.del-btn {
+.del-btn, .edit-btn {
   background-color: palegoldenrod;
   border-radius: 10px;
   border: 0px;
   padding: 10px;
+  margin: 0 10px
+}
+
+.cars-form-edit {
+  display: none;
 }

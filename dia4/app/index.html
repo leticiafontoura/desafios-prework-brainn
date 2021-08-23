@@ -5,9 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dia 4</title>
+    <script src="https://kit.fontawesome.com/fcc5406e07.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <form data-js="cars-form">
+    <form data-js="cars-form" class="cars-form">
       <h1>Vamos cadastrar os carrinhos? 😊</h1>
       <label for="car-image">Imagem:</label>
       <input required type="text" id="car-image" name="car-image" data-js="car-image" placeholder="Ex: URLdaImagem.png">
@@ -20,7 +21,25 @@
       <label for="car-color">Cor:</label>
       <input required type="text" id="car-color" name="car-color" data-js="car-color" placeholder="Ex: preto">
       <button type="submit" data-js="submit-btn" class="submit-btn">Cadastrar 🚗</button>
+
     </form>
+
+    <form data-js="cars-form-edit" class="cars-form-edit">
+      <p>Observação: as placas não podem ser alteradas por edição. Caso precise editar uma placa, adicionar como novo item.</p>
+      <label for="car-image-edit">Imagem:</label>
+      <input required type="text" id="car-image-edit" name="car-image-edit" data-js="car-image-edit" placeholder="Ex: URLdaImagem.png">
+      <label for="car-make-model-edit">Marca/modelo:</label>
+      <input required type="text" id="car-make-model-edit" name="car-make-model-edit" data-js="car-make-model-edit" placeholder="Ex: Fiat/Argo">
+      <label for="car-year-edit">Ano:</label>
+      <input required type="number" id="car-year-edit" name="car-year-edit" data-js="car-year-edit" placeholder="Ex: 1999">
+      <label for="car-license-plate-edit">Placa:</label>
+      <input disabled required pattern="[A-Z]{3}[-][0-9]{4}" type="text" id="car-license-plate-edit" name="car-license-plate-edit" data-js="car-license-plate-edit" placeholder="Formato ABC-1234">
+      <label for="car-color-edit">Cor:</label>
+      <input required type="text" id="car-color-edit" name="car-color-edit" data-js="car-color-edit" placeholder="Ex: preto">
+      <button type="submit" data-js="edit-save-btn" class="edit-save-btn">Salvar alteração 🚗</button>
+
+    </form>
+
 
     <div class="error-message" data-js="error-message">
 
